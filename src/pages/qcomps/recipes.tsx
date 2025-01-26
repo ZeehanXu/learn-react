@@ -13,10 +13,32 @@ export const recipes = [{
 }];
 
 export default function RecipeList() {
+  const listItems = recipes.map(item=>
+      <RecipeDiv key = {item.id} name = {item.name} ingredients={Array.from(item.ingredients)}/>
+    );
   return (
     <div>
       <h1>Recipes</h1>
-      {}
+      {listItems}
     </div>
+  );
+}
+
+function RecipeDiv({name, ingredients} : {name: String, ingredients: Array<String>}){
+  return (
+    <div>
+      <h2> {name} </h2>
+      <ul>
+        <IngredientsItemList ingredients={ingredients}/>
+      </ul>
+    </div>
+  );
+}
+
+function IngredientsItemList({ ingredients }:{ingredients: Array<String>}) {
+  return ingredients.map((ingredient) =>
+    <li key = {ingredient}>
+      {ingredient}
+    </li>
   );
 }
