@@ -1,18 +1,19 @@
+import { SetStateAction,useState } from "react";
 export default function Form() {
-  let firstName = '';
-  let lastName = '';
 
-  function handleFirstNameChange(e: { target: { value: string; }; }) {
-    firstName = e.target.value;
+  const [firstName, setFName] = useState('');
+  const [lastName, setLName] = useState('');
+  function handleFirstNameChange(e: { target: { value: SetStateAction<String>; }; }) {
+    setFName(e.target.value);
   }
 
-  function handleLastNameChange(e: { target: { value: string; }; }) {
-    lastName = e.target.value;
+  function handleLastNameChange(e: { target: { value: SetStateAction<String>;  }; }) {
+    setLName(e.target.value);
   }
 
   function handleReset() {
-    firstName = '';
-    lastName = '';
+    setFName('');
+    setLName('');
   }
 
   return (
